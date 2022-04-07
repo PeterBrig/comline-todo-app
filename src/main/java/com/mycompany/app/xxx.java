@@ -1,6 +1,4 @@
-package src.main.java.com.mycompany.app;
-
-import com.sun.org.apache.bcel.internal.generic.NEW;
+package com.mycompany.app;
 
 import java.util.ArrayList;
 import java.util.Scanner;

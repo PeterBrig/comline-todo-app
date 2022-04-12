@@ -1,7 +1,8 @@
 package com.mycompany.app;
 
-import java.util.ArrayList;
 import java.util.Scanner;
+
+import static com.mycompany.app.Main.fileName;
 
 public class InterMode {
 
@@ -18,51 +19,38 @@ public class InterMode {
         System.out.println(mainMenu);
     }
 
-    public ArrayList interactiveMainLoop(ArrayList<String> arrayList) {
+    public void interactiveMainLoop() {
         String userChoice = "";
+        todo.readFromFile(fileName);
         while (!userChoice.equals("4")) {
             userChoice = this.readString();
             switch (userChoice) {
                 case "1":
-                    if(!arrayList.isEmpty()) {
-                        todo.showTasks(arrayList);
-                    } else {
-                        System.out.println("List is empty");
-                    }
+                    todo.showTasks();
                     break;
                 case "2":
                     System.out.println("Enter new task\n");
                     String newTask = this.readString();
-                    todo.addTask(arrayList, newTask);
+                    todo.addTask(newTask);
                     System.out.println("New task added successfully\n");
                     break;
                 case "3":
-                    if(!arrayList.isEmpty()) {
-                        System.out.println("Current task list: ");
-                        for (int i = 0; i < arrayList.size(); i++) {
-                            String s = arrayList.get(i);
-                            System.out.println((i + 1) + " " + s);
-                        }
-                        System.out.println("Enter task number to delete");
-                        int num = this.readInt();
-                        if ((num <= arrayList.size()) && (num != -1)){
-                            todo.deleteTask(arrayList, num -1);
-                            System.out.println("Task removed from the list!");
-                        } else {
-                            System.out.println("Wrong input");
-                        }
-                    } else
-                        System.out.println("There are currently no tasks!");
+                    System.out.println("Enter task number to delete");
+                    int num = this.readInt();
+                    todo.deleteTask(num);
+                    System.out.println("Task removed from the list!");
                     break;
                 case "4":
-                    //
+                    System.exit(0);
+                case "5":
+                    System.out.println("Save changes to file");
+                    todo.saveToFile(fileName);
                     break;
                 default:
                     ;
                     //
             }
         }
-    return new ArrayList();
     }
 
     public String readString() {

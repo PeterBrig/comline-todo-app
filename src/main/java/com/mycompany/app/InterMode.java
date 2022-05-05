@@ -38,7 +38,6 @@ public class InterMode {
                     System.out.println("Enter task number to delete");
                     int num = this.readInt();
                     todo.deleteTask(num);
-                    System.out.println("Task removed from the list!");
                     break;
                 case "4":
                     System.exit(0);
@@ -53,13 +52,13 @@ public class InterMode {
         }
     }
 
-    public String readString() {
+    private String readString() {
         Scanner scan = new Scanner(System.in);
         String input = scan.nextLine();
         return input;
     }
 
-    public int readInt() {
+    private int readInt() {
         Scanner scan = new Scanner(System.in);
         if(scan.hasNextInt())
              return scan.nextInt();

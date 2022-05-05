@@ -8,7 +8,6 @@ import java.util.ArrayList;
 public class Todo {
 
     private ArrayList<Chore> choreList;
-    //Prints tasks from current list
 
     public Todo(){
         choreList = new ArrayList<>();
@@ -31,6 +30,7 @@ public class Todo {
     public void deleteTask(int index) {
         if(index <= choreList.size() && index != -1) {
             choreList.remove(index - 1);
+            System.out.println("Task removed from the list!");
         } else {
             System.out.println("Wrong number!");
         }
@@ -58,8 +58,8 @@ public void saveToFile(String fileName) {
         choreList.stream().forEach(chore -> {
             try {
                 writer.write(chore.getTitle()+ "\n");
-            } catch (IOException e) {
-                e.printStackTrace();
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
             }
         });
     }

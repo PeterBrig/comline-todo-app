@@ -1,8 +1,5 @@
 package com.mycompany.app;
 
-/**
- * Created by psb on 12.04.22.
- */
 public class Chore {
     private String title;
     private boolean isCompleted;

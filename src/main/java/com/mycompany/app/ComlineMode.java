@@ -1,20 +1,28 @@
 package com.mycompany.app;
 
-/**
- * Created by psb on 08.04.22.
- */
 public class ComlineMode {
 
     Todo todo = new Todo();
 
-    public void printHello(){
-        System.out.println("Comline");
-    }
     public void comlineMainLoop(String[] args, String filename) {
-/*        String arg = args[0];
+        todo.readFromFile(filename);
+        String arg = args[0];
         switch (arg){
+            case ("-h"):
+                System.out.println("Usage: \n" +
+                        "\tcomline-todo-app-1.0-SNAPSHOT-executable.jar add "
+                        + '"'
+                        + "your task"
+                        +'"');
+                break;
             case ("show"):
-                todo.readFromFile(filename);
-        }*/
+                todo.showTasks();
+                break;
+            case ("add"):
+                todo.addTask(args[1]);
+                todo.saveToFile(filename);
+                break;
+
+        }
     }
 }

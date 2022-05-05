@@ -24,7 +24,6 @@ public class Main {
         } else {
             ComlineMode comlineUserMode = new ComlineMode();
             comlineUserMode.comlineMainLoop(args, fileName);
-            comlineUserMode.printHello();
         }
     }
 }

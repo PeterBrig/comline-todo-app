@@ -1,8 +1,6 @@
 package com.mycompany.app;
 
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class Todo {
@@ -30,30 +28,25 @@ public class Todo {
     public void deleteTask(int index) {
         if(index <= choreList.size() && index != -1) {
             choreList.remove(index - 1);
-            System.out.println("Task removed from the list!");
+            System.out.println("Task removed from the list!\n");
         } else {
-            System.out.println("Wrong number!");
+            System.out.println("Wrong number!\n");
         }
     }
 
     public void readFromFile(String fileName) {
         try {
-        if (!Files.isReadable(Paths.get(fileName))) {
-            System.out.println("File " + fileName + " doesn't exist!");
-        } else {
             BufferedReader br = new BufferedReader(new FileReader(fileName));
             String sCurrentLine;
             while ((sCurrentLine = br.readLine()) != null){
                 this.choreList.add(new Chore(sCurrentLine, false));
             }
-        }
     } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
 
 public void saveToFile(String fileName) {
-        System.out.println("Write");
     try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
         choreList.stream().forEach(chore -> {
             try {
@@ -62,9 +55,9 @@ public void saveToFile(String fileName) {
                 System.out.println(e.getMessage());
             }
         });
-    }
-    catch (IOException e) {
-        e.printStackTrace();
+        System.out.println("Saved!\n");
+    } catch (Exception e) {
+        System.out.println(e.getMessage());
     }
     }
 
